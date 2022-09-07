@@ -1,38 +1,97 @@
-.App {
+.App{
   text-align: center;
+  background-color: black;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.SearchModule{
+color: white;
+border: 1px solid black;
+border-radius: 5px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.locationSign{
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 34px;
+  font-size: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+        
+:hover .locationSign{
+   color: white;
+  text-decoration: none;
+}
+.input, .submitButton{
+  background-color: black;
+  border: 1px solid white;
+  color: grey;
+  border-radius: 3px;
+  width: 100%; 
+  min-width: fit-content;
+  font-size: 20px;
+}
+.cityResults{
+color: white;
+}
+.WeatherForecast{
+  text-align: left;
+}
+.degreesChangeLink{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+:hover .degreesChangeLink{
+  color:white;
+}
+.box {
+  position: relative; 
+  text-overflow: clip;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box:before {
+    content: "";
+    z-index:0;
+    position: absolute;
+    top: 22px;
+    right: 12px;
+    bottom: -17px;
+    left: 12px;
+    background: linear-gradient(-45deg, #c36fca 0%, #696eff 100% );
+    transform: translate3d(0px, 20px, 0) scale(0.95);
+    filter: blur(20px);
+    opacity: var(0.7);
+    transition: opacity 0.3s;
+    border-radius: inherit;
+
+}
+   .city {
+  position: relative; 
+  text-overflow: clip;
+  z-index: 0;
+}
+
+.city:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 1px;
+    right: 11px;
+    bottom: 35px;
+    left: 10px;
+    background: linear-gradient(-45deg, #c36fca 0%, #696eff 100% );
+    transform: translate3d(0px, 20px, 0) scale(0.95);
+    filter: blur(20px);
+    opacity: var(0.7);
+    transition: opacity 0.3s;
+    border-radius: inherit;
+
+}     
+img {
+  z-index: 0;
+}
+.TemperatureCalculator {
+  font-size: small;
+}
+.openSourseLink a{
+  font-size: small;
+  color: white;
+  text-decoration: none;
 }
