@@ -1,19 +1,19 @@
 import React from "react";
 import TemperatureCalculator from "./TempCalculator";
 
-export default function WeatherForecast() {
+export default function WeatherForecast(props) {
   return (
     <div className="row p-2 m-3 WeatherForecast">
       <h5>
         <span>Current weather: </span>
-        <span>19 </span>
+        <span>{props.forecast.temperature} </span>
         <span>°</span>
         <TemperatureCalculator />
         <div>
-          Wind: <span>3</span> m/s
+          Wind: <span>{props.forecast.wind}</span> m/s
         </div>
         <div>
-          Humidity: <span>50</span>%
+          Humidity: <span>{props.forecast.humidity}</span>%
         </div>
       </h5>
     </div>
