@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function SearchResults(props) {
-  console.log(props);
+  //console.log(props);
   let imgSrc = `http://openweathermap.org/img/wn/${props.forecast.img}@2x.png`;
   return (
     <div>

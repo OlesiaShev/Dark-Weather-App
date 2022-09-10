@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import SearchModule from "./SearchModule";
-import SourseCode from "./SourseCode";
+
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <div>
           <SearchModule />
-          <SourseCode/>
+          
         </div>
       </header>
     </div>

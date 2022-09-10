@@ -90,8 +90,7 @@ img {
 .TemperatureCalculator {
   font-size: small;
 }
-.openSourseLink a{
-  font-size: small;
-  color: white;
-  text-decoration: none;
+.openSourseLink {
+  color: gray;
+  font-size: 14px;
 }
