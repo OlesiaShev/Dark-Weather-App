@@ -29,7 +29,6 @@ export default function SearchModule() {
   };
 
   function showApiResponse(response) {
-    setReady(true);
     setName(response.data.name);
     setTemperature(Math.round(response.data.main.temp));
     setDescription(response.data.weather[0].main);
@@ -49,15 +48,11 @@ export default function SearchModule() {
     setReady(true);
   }
 
-  if (ready === false) {
-    firstSearch();
-  }
-
   function updateValue(event) {
     setInput(event.target.value);
   }
 
-  function doSearch(event) {
+  function userSearch(event) {
     event.preventDefault();
     let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
@@ -65,48 +60,53 @@ export default function SearchModule() {
     axios.get(apiUrlByCity).then(showApiResponse);
   }
 
-  return (
-    <div
-      className="SearchModule container"
-      style={{
-        backgroundColor: "black",
-        backgroundImage: `url(${background})`,
-        backgroundRepeat: "no-repeat",
-        height: "100%",
-      }}
-    >
-      <div className="block container ms-4 me-5">
-        <form onSubmit={doSearch}>
-          <div className="row p-2 m-3">
-            <div className="col-6">
-              <div>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Enter your city"
-                  autoFocus="on"
-                  autoComplete="off"
-                  onChange={updateValue}
-                />
+  if (ready === true) {
+    return (
+      <div
+        className="SearchModule container"
+        style={{
+          backgroundColor: "black",
+          backgroundImage: `url(${background})`,
+          backgroundRepeat: "no-repeat",
+          height: "100%",
+        }}
+      >
+        <div className="block container ms-4 me-5">
+          <form onSubmit={userSearch}>
+            <div className="row p-2 m-3">
+              <div className="col-6">
+                <div>
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Enter your city"
+                    autoFocus="on"
+                    autoComplete="off"
+                    onChange={updateValue}
+                  />
+                </div>
+              </div>
+              <div className="col-3">
+                <button type="submit" className="submitButton">
+                  Submit
+                </button>
+              </div>
+              <div className="col-3 d-flex justify-content-start">
+                <a href="/" alt="use your location" className="locationSign">
+                  <i className="fa-solid fa-location-crosshairs"></i>
+                </a>
               </div>
             </div>
-            <div className="col-3">
-              <button type="submit" className="submitButton">
-                Submit
-              </button>
-            </div>
-            <div className="col-3 d-flex justify-content-start">
-              <a href="/" alt="use your location" className="locationSign">
-                <i className="fa-solid fa-location-crosshairs"></i>
-              </a>
-            </div>
-          </div>
-        </form>
-        <SearchResults forecast={forecast} />
-        <WeatherForecast forecast={forecast} />
-        <DailyForecast forecast={forecast} />
-        <SourceCode />
+          </form>
+          <SearchResults forecast={forecast} />
+          <WeatherForecast forecast={forecast} />
+          <DailyForecast forecast={forecast} />
+          <SourceCode />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    firstSearch();
+  }
+  
 }
