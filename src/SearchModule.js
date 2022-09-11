@@ -68,13 +68,13 @@ export default function SearchModule() {
           backgroundColor: "black",
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
-          height: "100%",
+          height: "150vh",
         }}
       >
-        <div className="block container ms-4 me-5">
+        <div className="block container mt-3">
           <form onSubmit={userSearch}>
-            <div className="row p-2 m-3">
-              <div className="col-6">
+            <div className="row ms-3 me-3 d-flex">
+              <div className="col-12 col-sm-6">
                 <div>
                   <input
                     className="input"
@@ -86,12 +86,12 @@ export default function SearchModule() {
                   />
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-6 col-sm-3">
                 <button type="submit" className="submitButton">
                   Submit
                 </button>
               </div>
-              <div className="col-3 d-flex justify-content-start">
+              <div className="col-6 col-sm-3">
                 <a href="/" alt="use your location" className="locationSign">
                   <i className="fa-solid fa-location-crosshairs"></i>
                 </a>
@@ -107,6 +107,7 @@ export default function SearchModule() {
     );
   } else {
     firstSearch();
+    return "Loading...";
   }
   
 }

@@ -8,12 +8,16 @@ border: 1px solid black;
 border-radius: 5px;
 }
 .locationSign{
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 34px;
-  font-size: 20px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 34px;
+    font-size: 20px;
+    height: 34px;
+    padding: 0px 3px 1px 3px;
+    text-align: center;
+    text-align: 00;
 }
         
 :hover .locationSign{
