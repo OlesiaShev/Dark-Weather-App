@@ -3,6 +3,7 @@ import background from "./images/WeatherDarkBackGroundRainbow.png";
 import SearchResults from "./SearchResults";
 import DailyForecast from "./DailyForecast.js";
 import WeatherForecast from "./WeatherForecast.js";
+import SourceCode from "./SourceCode.js";
 import axios from "axios";
 
 export default function SearchModule() {
@@ -64,8 +65,6 @@ export default function SearchModule() {
     axios.get(apiUrlByCity).then(showApiResponse);
   }
 
-  
-
   return (
     <div
       className="SearchModule container"
@@ -73,7 +72,7 @@ export default function SearchModule() {
         backgroundColor: "black",
         backgroundImage: `url(${background})`,
         backgroundRepeat: "no-repeat",
-        height: "100vh",
+        height: "100%",
       }}
     >
       <form onSubmit={doSearch}>
@@ -105,6 +104,7 @@ export default function SearchModule() {
       <SearchResults forecast={forecast} />
       <WeatherForecast forecast={forecast} />
       <DailyForecast forecast={forecast} />
+      <SourceCode />
     </div>
   );
 }
