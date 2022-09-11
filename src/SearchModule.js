@@ -36,6 +36,7 @@ export default function SearchModule() {
     setWind(response.data.wind.speed);
     setImg(response.data.weather[0].icon);
     setCountry(response.data.sys.country);
+    console.log(response);
   }
 
   function firstSearch() {
