@@ -6,6 +6,7 @@ import WeatherForecast from "./WeatherForecast.js";
 import axios from "axios";
 
 export default function SearchModule() {
+  let [ready, setReady] = useState(false);
   let [input, setInput] = useState("");
   let [name, setName] = useState("");
   let [temperature, setTemperature] = useState("");
@@ -14,6 +15,7 @@ export default function SearchModule() {
   let [wind, setWind] = useState("");
   let [img, setImg] = useState("");
   let [country, setCountry] = useState("");
+  console.log(ready);
 
   let forecast = {
     name: name,
@@ -24,52 +26,45 @@ export default function SearchModule() {
     img: img,
     country: country,
   };
+
+  function showApiResponse(response) {
+    setReady(true);
+    setName(response.data.name);
+    setTemperature(Math.round(response.data.main.temp));
+    setDescription(response.data.weather[0].main);
+    setHumidity(response.data.main.humidity);
+    setWind(response.data.wind.speed);
+    setImg(response.data.weather[0].icon);
+    setCountry(response.data.sys.country);
+  }
+
   function firstSearch() {
     let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
     let firstCity = "London";
     let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${firstCity}&units=${units}&appid=${apiKey}`;
-
-    function showApiResponse(response) {
-      setName(response.data.name);
-      setTemperature(Math.round(response.data.main.temp));
-      setDescription(response.data.weather[0].main);
-      setHumidity(response.data.main.humidity);
-      setWind(response.data.wind.speed);
-      setImg(response.data.weather[0].icon);
-      setCountry(response.data.sys.country);
-      console.log(response);
-    }
     axios.get(apiUrlByCity).then(showApiResponse);
-  }
-  
-  if (input.length ===0 ){ 
-  firstSearch();
+    setReady(true);
   }
 
-      function doSearch(event) {
-        event.preventDefault();
-        let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-        let units = "metric";
-        let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
+  if (ready === false) {
+    firstSearch();
+  }
 
-        function showApiResponse(response) {
-          setName(response.data.name);
-          setTemperature(Math.round(response.data.main.temp));
-          setDescription(response.data.weather[0].main);
-          setHumidity(response.data.main.humidity);
-          setWind(response.data.wind.speed);
-          setImg(response.data.weather[0].icon);
-          setCountry(response.data.sys.country);
-          console.log(response);
-        }
-
-        axios.get(apiUrlByCity).then(showApiResponse);
-      }
-  
   function updateValue(event) {
     setInput(event.target.value);
   }
+
+  function doSearch(event) {
+    event.preventDefault();
+    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    let units = "metric";
+    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrlByCity).then(showApiResponse);
+  }
+
+  
+
   return (
     <div
       className="SearchModule container"
