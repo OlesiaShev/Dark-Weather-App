@@ -75,36 +75,38 @@ export default function SearchModule() {
         height: "100%",
       }}
     >
-      <form onSubmit={doSearch}>
-        <div className="row p-2 m-3">
-          <div className="col-6">
-            <div>
-              <input
-                className="input"
-                type="text"
-                placeholder="Enter your city"
-                autoFocus="on"
-                autoComplete="off"
-                onChange={updateValue}
-              />
+      <div className="block container ms-4 me-5">
+        <form onSubmit={doSearch}>
+          <div className="row p-2 m-3">
+            <div className="col-6">
+              <div>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Enter your city"
+                  autoFocus="on"
+                  autoComplete="off"
+                  onChange={updateValue}
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <button type="submit" className="submitButton">
+                Submit
+              </button>
+            </div>
+            <div className="col-3 d-flex justify-content-start">
+              <a href="/" alt="use your location" className="locationSign">
+                <i className="fa-solid fa-location-crosshairs"></i>
+              </a>
             </div>
           </div>
-          <div className="col-3">
-            <button type="submit" className="submitButton">
-              Submit
-            </button>
-          </div>
-          <div className="col-3 d-flex justify-content-start">
-            <a href="/" alt="use your location" className="locationSign">
-              <i className="fa-solid fa-location-crosshairs"></i>
-            </a>
-          </div>
-        </div>
-      </form>
-      <SearchResults forecast={forecast} />
-      <WeatherForecast forecast={forecast} />
-      <DailyForecast forecast={forecast} />
-      <SourceCode />
+        </form>
+        <SearchResults forecast={forecast} />
+        <WeatherForecast forecast={forecast} />
+        <DailyForecast forecast={forecast} />
+        <SourceCode />
+      </div>
     </div>
   );
 }
