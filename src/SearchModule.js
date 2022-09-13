@@ -10,12 +10,12 @@ export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("");
   let [forecastObject, setForecastObject] = useState({});
-  console.log(ready);
+  // console.log(ready);
 
   function showApiResponse(response) {
     setForecastObject({ response });
     setReady(true);
-    console.log(response);
+    // console.log(response);
   }
 
   function updateValue(event) {
@@ -85,6 +85,4 @@ export default function SearchModule() {
     axios.get(apiUrlByCity).then(showApiResponse);
     return "Loading data...";
   }
-
-  
 }
