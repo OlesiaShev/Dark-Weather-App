@@ -9,43 +9,13 @@ import axios from "axios";
 export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("");
-  let [name, setName] = useState("");
-  let [temperature, setTemperature] = useState("");
-  let [description, setDescription] = useState("");
-  let [humidity, setHumidity] = useState("");
-  let [wind, setWind] = useState("");
-  let [img, setImg] = useState("");
-  let [country, setCountry] = useState("");
+  let [forecastObject, setForecastObject] = useState({});
   console.log(ready);
 
-  let forecast = {
-    name: name,
-    temperature: temperature,
-    description: description,
-    humidity: humidity,
-    wind: wind,
-    img: img,
-    country: country,
-  };
-
   function showApiResponse(response) {
-    setName(response.data.name);
-    setTemperature(Math.round(response.data.main.temp));
-    setDescription(response.data.weather[0].main);
-    setHumidity(response.data.main.humidity);
-    setWind(response.data.wind.speed);
-    setImg(response.data.weather[0].icon);
-    setCountry(response.data.sys.country);
-    console.log(response);
-  }
-
-  function firstSearch() {
-    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-    let units = "metric";
-    let firstCity = "London";
-    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${firstCity}&units=${units}&appid=${apiKey}`;
-    axios.get(apiUrlByCity).then(showApiResponse);
+    setForecastObject({ response });
     setReady(true);
+    console.log(response);
   }
 
   function updateValue(event) {
@@ -54,13 +24,14 @@ export default function SearchModule() {
 
   function userSearch(event) {
     event.preventDefault();
-    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-    let units = "metric";
-    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
-    axios.get(apiUrlByCity).then(showApiResponse);
+    // let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    // let units = "metric";
+    // let city = "Paris";
+    // let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+    // axios.get(apiUrlByCity).then(showApiResponse);
   }
 
-  if (ready === true) {
+  if (ready) {
     return (
       <div
         className="SearchModule container"
@@ -98,16 +69,22 @@ export default function SearchModule() {
               </div>
             </div>
           </form>
-          <SearchResults forecast={forecast} />
-          <WeatherForecast forecast={forecast} />
-          <DailyForecast forecast={forecast} />
+          <SearchResults forecast={forecastObject} />
+          <WeatherForecast forecast={forecastObject} />
+          <DailyForecast forecast={forecastObject} />
           <SourceCode />
         </div>
       </div>
     );
   } else {
-    firstSearch();
-    return "Loading...";
+    //   let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    let apiKey = "8aff452f462b48a45bc3c998378072b3";
+    let units = "metric";
+    let city = "Paris";
+    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrlByCity).then(showApiResponse);
+    return "Loading data...";
   }
+
   
 }
