@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function SearchModule() {
   let [ready, setReady] = useState(false);
-  let [input, setInput] = useState("");
+  let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
   console.log(ready);
 
@@ -22,13 +22,18 @@ export default function SearchModule() {
     setInput(event.target.value);
   }
 
-  function userSearch(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    // let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-    // let units = "metric";
-    // let city = "Paris";
-    // let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    // axios.get(apiUrlByCity).then(showApiResponse);
+    Search();
+  }
+
+  function Search() {
+    //let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    let apiKey = "8aff452f462b48a45bc3c998378072b3";
+    let units = "metric";
+    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrlByCity).then(showApiResponse);
+    return "Loading data...";
   }
 
   if (ready) {
@@ -43,7 +48,7 @@ export default function SearchModule() {
         }}
       >
         <div className="block container mt-3">
-          <form onSubmit={userSearch}>
+          <form onSubmit={handleSubmit}>
             <div className="row ms-3 me-3 d-flex">
               <div className="col-12 col-sm-6">
                 <div>
@@ -77,12 +82,7 @@ export default function SearchModule() {
       </div>
     );
   } else {
-    //   let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-    let apiKey = "8aff452f462b48a45bc3c998378072b3";
-    let units = "metric";
-    let city = "Kyiv";
-    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-    axios.get(apiUrlByCity).then(showApiResponse);
-    return "Loading data...";
+    Search();
+    return "Loading";
   }
 }
