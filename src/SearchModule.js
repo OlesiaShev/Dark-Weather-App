@@ -10,12 +10,12 @@ export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("");
   let [forecastObject, setForecastObject] = useState({});
-  // console.log(ready);
+  console.log(ready);
 
   function showApiResponse(response) {
     setForecastObject({ response });
+    console.log(response);
     setReady(true);
-    // console.log(response);
   }
 
   function updateValue(event) {
@@ -80,7 +80,7 @@ export default function SearchModule() {
     //   let apiKey = "4ac2c287c8855d10edca04e5759fe661";
     let apiKey = "8aff452f462b48a45bc3c998378072b3";
     let units = "metric";
-    let city = "Paris";
+    let city = "Kyiv";
     let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrlByCity).then(showApiResponse);
     return "Loading data...";
