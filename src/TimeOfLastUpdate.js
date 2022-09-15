@@ -1,9 +1,9 @@
 import React from "react";
 
 export default function processTimeStamp(props) {
-  console.log(props);
+
     let currentDate = new Date(props.timestamp * 1000);
-    console.log(currentDate);
+
     let days = [
       "Monday",
       "Tuesday",

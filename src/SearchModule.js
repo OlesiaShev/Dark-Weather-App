@@ -13,9 +13,9 @@ export default function SearchModule() {
   console.log(ready);
 
   function showApiResponse(response) {
+    setReady(true);
     setForecastObject({ response });
     console.log(response);
-    setReady(true);
   }
 
   function updateValue(event) {
@@ -28,8 +28,8 @@ export default function SearchModule() {
   }
 
   function Search() {
-    //let apiKey = "4ac2c287c8855d10edca04e5759fe661";
-    let apiKey = "8aff452f462b48a45bc3c998378072b3";
+    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    //let apiKey = "8aff452f462b48a45bc3c998378072b3";
     let units = "metric";
     let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrlByCity).then(showApiResponse);

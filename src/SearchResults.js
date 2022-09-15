@@ -1,9 +1,11 @@
 import React from "react";
 import TimeOfLastUpdate from "./TimeOfLastUpdate.js";
+import IconsModule from "./IconsModule.js";
 
 export default function SearchResults(props) {
-  let imgSrc = `http://openweathermap.org/img/wn/${props.forecast.response.data.weather[0].icon}@2x.png`;
+  //let imgSrc = `http://openweathermap.org/img/wn/${props.forecast.response.data.weather[0].icon}@2x.png`;
   //console.log(props.forecast.response.data.dt);
+  let iconCode = props.forecast.response.data.weather[0].icon;
   let timestamp = props.forecast.response.data.dt;
 
   return (
@@ -14,9 +16,7 @@ export default function SearchResults(props) {
             {props.forecast.response.data.name},{" "}
             {props.forecast.response.data.sys.country}
           </h1>
-          <div className="city">
-            <img src={imgSrc} alt="weather"></img>
-          </div>
+          <IconsModule iconCode={iconCode} />
         </div>
         <div className="col-12 col-sm-6 d-flex align-items-center">
           <div>
