@@ -5,15 +5,18 @@ export default function TemperatureCalculator(props) {
   let [temperature, setTemperature] = useState(props.temp);
 
   console.log(props.temp);
+
   function showFahrenheit(event) {
     event.preventDefault();
-    setTemperature((props.temp * 9) / 5 + 32);
     setMetric("F");
+    setTemperature((props.temp * 9) / 5 + 32);
+    
   }
   function showCelcius(event) {
     event.preventDefault();
-    setTemperature(props.temp);
     setMetric("C");
+    setTemperature(props.temp);
+    
   }
   return (
     <div className="TemperatureCalculator">
@@ -21,7 +24,7 @@ export default function TemperatureCalculator(props) {
         {" "}
         Current weather: {""}
         <span> {temperature} </span>
-        <span>° {metric}</span>{" "}
+        <span>° {metric}</span>
       </h5>
       <a href="/" className="showFahrenheit" onClick={showFahrenheit}>
         Show Fahrenheit
