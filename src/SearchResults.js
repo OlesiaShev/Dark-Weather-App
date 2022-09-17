@@ -16,7 +16,7 @@ export default function SearchResults(props) {
             {props.forecast.response.data.name},{" "}
             {props.forecast.response.data.sys.country}
           </h1>
-          <IconsModule iconCode={iconCode} />
+          <IconsModule iconCode={ iconCode } />
         </div>
         <div className="col-12 col-sm-6 d-flex align-items-center">
           <div>

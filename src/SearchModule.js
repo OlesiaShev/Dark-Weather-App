@@ -44,7 +44,7 @@ export default function SearchModule() {
           backgroundColor: "black",
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
-          height: "150vh",
+          height: "110vh",
         }}
       >
         <div className="block container mt-3">
