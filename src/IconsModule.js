@@ -29,7 +29,8 @@ export default function IconsModule(props) {
     <div className="p-3">
       <ReactAnimatedWeather
         icon={mapping[props.iconCode]}
-        color={"goldenrod"}
+        // color={"goldenrod"}
+        color={"#d32ee2"}
         size={54}
         animate={true}
       />

@@ -1,27 +1,26 @@
 .App{
-  text-align: center;
-  background-color: black;
+text-align: center;
+    background: black;
+    overflow: scroll;
+    height: 800px;
 }
 .SearchModule{
 color: white;
 border: 1px solid black;
 border-radius: 5px;
+
 }
 .locationSign{
     color: white;
     text-decoration: none;
-    border: 1px solid white;
-    border-radius: 50%;
-    width: 34px;
-    font-size: 20px;
-    height: 34px;
-    padding: 0px 3px 1px 3px;
-    text-align: center;
+    font-size: 32px;
     text-align: 00;
+    display: flex;
+    color: #d32ee2;
 }
         
 :hover .locationSign{
-   color: white;
+   color: #d32ee2;
   text-decoration: none;
 }
 .input, .submitButton{

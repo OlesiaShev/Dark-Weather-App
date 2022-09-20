@@ -39,12 +39,13 @@ export default function SearchModule() {
     return (
       <div
         className="SearchModule container"
-        style={{
-          backgroundColor: "black",
-          backgroundImage: `url(${background})`,
-          backgroundRepeat: "no-repeat",
-          height: "110vh",
-        }}
+   //     style={{
+   //   backgroundColor: "black",
+        //   backgroundImage: `url(${background})`,
+        //   backgroundRepeat: "no-repeat",
+        //   height: "110vh",
+        //   paddingLeft: "-70px",
+  //     }}
       >
         <div className="block container mt-3">
           <form onSubmit={handleSubmit}>
