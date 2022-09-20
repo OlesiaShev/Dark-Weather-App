@@ -10,7 +10,7 @@ export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
-  console.log(ready);
+  //console.log(ready);
 
   function showApiResponse(response) {
     setReady(true);
