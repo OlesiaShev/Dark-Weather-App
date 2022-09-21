@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import background from "./images/WeatherDarkBackGroundRainbow.png";
 import SearchResults from "./SearchResults";
 import DailyForecast from "./DailyForecast.js";
 import WeatherForecast from "./WeatherForecast.js";
@@ -38,15 +37,7 @@ export default function SearchModule() {
   if (ready) {
     return (
       <div
-        className="SearchModule container"
-        //     style={{
-        //   backgroundColor: "black",
-        //   backgroundImage: `url(${background})`,
-        //   backgroundRepeat: "no-repeat",
-        //   height: "110vh",
-        //   paddingLeft: "-70px",
-        //     }}
-      >
+        className="SearchModule container">
         <div className="block container mt-1">
           <form onSubmit={handleSubmit}>
             <div className="row ms-3 me-3 d-flex">
