@@ -39,15 +39,15 @@ export default function SearchModule() {
     return (
       <div
         className="SearchModule container"
-   //     style={{
-   //   backgroundColor: "black",
+        //     style={{
+        //   backgroundColor: "black",
         //   backgroundImage: `url(${background})`,
         //   backgroundRepeat: "no-repeat",
         //   height: "110vh",
         //   paddingLeft: "-70px",
-  //     }}
+        //     }}
       >
-        <div className="block container mt-3">
+        <div className="block container mt-1">
           <form onSubmit={handleSubmit}>
             <div className="row ms-3 me-3 d-flex">
               <div className="col-12 col-sm-6">
@@ -62,12 +62,12 @@ export default function SearchModule() {
                   />
                 </div>
               </div>
-              <div className="col-6 col-sm-3">
+              <div className="col-6 col-sm-3 mt-1">
                 <button type="submit" className="submitButton">
                   Submit
                 </button>
               </div>
-              <div className="col-6 col-sm-3">
+              <div className="col-6 col-sm-3 mt-1">
                 <a href="/" alt="use your location" className="locationSign">
                   <i className="fa-solid fa-location-crosshairs"></i>
                 </a>
