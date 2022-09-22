@@ -4,7 +4,7 @@ export default function TemperatureCalculator(props) {
   let [metric, setMetric] = useState(props.metric);
   // let [temperature, setTemperature] = useState(props.temp);
 
-  console.log(props.temp);
+  //console.log(props.temp);
 
   function showFahrenheit(event) {
     event.preventDefault();

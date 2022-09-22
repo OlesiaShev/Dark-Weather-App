@@ -4,15 +4,15 @@ export default function processTimeStamp(props) {
 
     let currentDate = new Date(props.timestamp * 1000);
 
-    let days = [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
     let day = currentDate.getDay();
     let hours = currentDate.getHours();
     let minutes = currentDate.getMinutes();

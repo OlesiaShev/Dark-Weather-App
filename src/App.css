@@ -97,3 +97,6 @@ img {
   color: gray;
   font-size: 14px;
 }
+.iconModule {
+  z-index: 20;
+}

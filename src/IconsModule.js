@@ -3,7 +3,9 @@ import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function IconsModule(props) {
-  console.log(props.iconCode);
+ // console.log(props.iconCode);
+  //console.log(props.size);
+
   const mapping = {
     "01d": "CLEAR_DAY",
     "01n": "CLEAR_NIGHT",
@@ -31,8 +33,8 @@ export default function IconsModule(props) {
         icon={mapping[props.iconCode]}
         // color={"goldenrod"}
         color={"#d32ee2"}
-        size={54}
-        animate={true}
+        size={props.size}
+        animate={ true }
       />
     </div>
   );

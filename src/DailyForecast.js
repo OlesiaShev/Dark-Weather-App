@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
+import IconsModule from "./IconsModule";
 
 export default function DailyForecast(props) {
-  let [ready, setReady] = useState(false);
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
 
-  // console.log(props.forecast.response.data.coord.lat);
+  let [ready, setReady] = useState(false);
+  let [dailyForecast, setDailyForecast] = useState(null);
+  let [dayIndex, setDayIndex] = useState(0);
+
   function showDailyForecast(response) {
-    console.log(response.data.daily);
-    console.log(response.data.daily);
+    console.log(response.data.daily[0].dt);
+    let timestamp = response.data.daily[0].dt;
+    let date = new Date(timestamp * 1000);
+    let dayIndex = date.getDay(date);
+    console.log(dayIndex);
+    setDailyForecast(response);
     setReady(true);
-    
+    setDayIndex(dayIndex);
   }
 
   function requestForecast() {
@@ -33,20 +40,15 @@ export default function DailyForecast(props) {
   if (ready) {
     return (
       <div className="row p-3 d-flex">
-        { days.map(function (day, index)
-        {
-          return (
-            <div div className="col-4 col-md-4  p-3 " key={ index }>
-              <div className="box">
-              { " " }
-                { day }
-                </div>
-            </div>
-          );
-        }) }
+        <div div className="col-4 col-md-4  p-3 "></div>
+        <IconsModule
+          className="iconModule"
+          iconCode={dailyForecast.data.daily[0].weather[0].icon}
+          size={60}
+        />
+        <div className="box"> {days[dayIndex]}</div>
       </div>
     );
-
   } else {
     requestForecast();
     return <div>Loading...</div>;

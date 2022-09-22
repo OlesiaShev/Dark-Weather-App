@@ -14,7 +14,7 @@ export default function SearchModule() {
   function showApiResponse(response) {
     setReady(true);
     setForecastObject({ response });
-    console.log(response);
+   // console.log(response);
   }
 
   function updateValue(event) {
