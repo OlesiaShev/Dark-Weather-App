@@ -36,12 +36,11 @@ export default function SearchModule() {
 
   if (ready) {
     return (
-      <div
-        className="SearchModule container">
-        <div className="block container mt-1">
+      <div className="SearchModule container">
+        <div className="block container mt-2">
           <form onSubmit={handleSubmit}>
             <div className="row ms-3 me-3 d-flex">
-              <div className="col-12 col-sm-6">
+              <div className="col-12 col-sm-6 mt-2">
                 <div>
                   <input
                     className="input"
@@ -53,12 +52,12 @@ export default function SearchModule() {
                   />
                 </div>
               </div>
-              <div className="col-6 col-sm-3 mt-1">
+              <div className="col-6 col-sm-3 mt-2">
                 <button type="submit" className="submitButton">
                   Submit
                 </button>
               </div>
-              <div className="col-6 col-sm-3 mt-1">
+              <div className="col-6 col-sm-3 mt-2">
                 <a href="/" alt="use your location" className="locationSign">
                   <i className="fa-solid fa-location-crosshairs"></i>
                 </a>
