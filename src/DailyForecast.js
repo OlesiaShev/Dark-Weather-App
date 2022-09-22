@@ -21,7 +21,7 @@ export default function DailyForecast() {
   let units = "metric";
   let lon = 48.8534;
   let lat = 2.3488;
-  let apiUrlByCoord = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
+  let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
   axios.get(apiUrlByCoord).then(showDailyForecast);
 
   return (
