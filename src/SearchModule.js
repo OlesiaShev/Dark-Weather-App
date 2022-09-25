@@ -9,14 +9,12 @@ export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
-  //console.log(ready);
 
   
 
   function showApiResponse(response) {
     setReady(true);
     setForecastObject({ response });
-   // console.log(response);
   }
 
   function updateValue(event) {

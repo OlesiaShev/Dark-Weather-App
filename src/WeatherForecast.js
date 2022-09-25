@@ -4,7 +4,6 @@ import TemperatureCalculator from "./TempCalculator";
 export default function WeatherForecast(props)
 {
   let temp = Math.round(props.forecast.response.data.main.temp);
- // console.log(props.forecast.response.data.main.temp);
   return (
     <div className="row p-2 m-3 WeatherForecast">
       <h5>
