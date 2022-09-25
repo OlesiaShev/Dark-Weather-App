@@ -5,12 +5,8 @@ import OneDayForecast from "./OneDayForecast";
 export default function DailyForecast(props) {
   let [ready, setReady] = useState(false);
   let [dailyForecast, setDailyForecast] = useState(null);
-  console.log(props);
 
-  useEffect(() =>
-  {
-    setReady(false)
-  },[props]);
+
 
   let days = [
     "Sunday",
@@ -35,9 +31,13 @@ export default function DailyForecast(props) {
     let lat = props.forecast.response.data.coord.lat;
     let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
     axios.get(apiUrlByCoord).then(showDailyForecast);
+
   }
 
-  console.log(dailyForecast);
+    useEffect(() => {
+      setReady(false);
+    }, [props.forecast.response.data.coord]);
+  
   if (ready) {
     return (
       <div className="row d-flex p-3 ">

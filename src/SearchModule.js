@@ -11,6 +11,8 @@ export default function SearchModule() {
   let [forecastObject, setForecastObject] = useState({});
   //console.log(ready);
 
+  
+
   function showApiResponse(response) {
     setReady(true);
     setForecastObject({ response });
