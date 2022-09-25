@@ -2,7 +2,6 @@ import React from "react";
 import IconsModule from "./IconsModule";
 
 export default function OneDayForecast(props) {
-  console.log(props);
 
   return (
     <div div className="col-4 col-md-4 p-3 ">
