@@ -24,8 +24,8 @@ export default function DailyForecast(props) {
   }
   function requestForecast()
   {
-    //  let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
-    let apiKeyq = "0dc40d3d7cda209ca40e77430c74cf57";
+    let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
+    //let apiKeyq = "0dc40d3d7cda209ca40e77430c74cf57";
     let units = "metric";
     let lon = props.forecast.response.data.coord.lon;
     let lat = props.forecast.response.data.coord.lat;

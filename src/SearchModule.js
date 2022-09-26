@@ -4,13 +4,12 @@ import DailyForecast from "./DailyForecast.js";
 import WeatherForecast from "./WeatherForecast.js";
 import SourceCode from "./SourceCode.js";
 import axios from "axios";
+import LocationButton from "./LocationButton";
 
 export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
-
-  
 
   function showApiResponse(response) {
     setReady(true);
@@ -58,9 +57,7 @@ export default function SearchModule() {
                 </button>
               </div>
               <div className="col-6 col-sm-3 mt-2">
-                <a href="/" alt="use your location" className="locationSign">
-                  <i className="fa-solid fa-location-crosshairs"></i>
-                </a>
+                <LocationButton />
               </div>
             </div>
           </form>
