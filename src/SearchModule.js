@@ -5,15 +5,35 @@ import WeatherForecast from "./WeatherForecast.js";
 import SourceCode from "./SourceCode.js";
 import axios from "axios";
 import LocationButton from "./LocationButton";
+import { setGlobalState, useGlobalState } from "./state/index.js";
 
 export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
+  console.log(forecastObject);
+  let [coords, setCoords] = useState({
+    lat: null,
+    lon: null,
+  });
+  console.log(coords);
+
+  let long = useGlobalState("lat");
+  console.log(long);
 
   function showApiResponse(response) {
     setReady(true);
     setForecastObject({ response });
+
+    setCoords({
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
+    });
+
+    setGlobalState({
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
+    });
   }
 
   function updateValue(event) {
@@ -63,7 +83,7 @@ export default function SearchModule() {
           </form>
           <SearchResults forecast={forecastObject} />
           <WeatherForecast forecast={forecastObject} />
-          <DailyForecast forecast={forecastObject} />
+          <DailyForecast coords={coords} />
           <SourceCode />
         </div>
       </div>

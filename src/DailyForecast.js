@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OneDayForecast from "./OneDayForecast";
 
-export default function DailyForecast(props) {
+export default function DailyForecast(props)
+{
+  console.log(props);
   let [ready, setReady] = useState(false);
   let [dailyForecast, setDailyForecast] = useState(null);
 
@@ -27,8 +29,8 @@ export default function DailyForecast(props) {
     let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
     //let apiKeyq = "0dc40d3d7cda209ca40e77430c74cf57";
     let units = "metric";
-    let lon = props.forecast.response.data.coord.lon;
-    let lat = props.forecast.response.data.coord.lat;
+    let lon = props.coords.lon;
+    let lat = props.coords.lat;
     let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
     axios.get(apiUrlByCoord).then(showDailyForecast);
 
@@ -36,7 +38,7 @@ export default function DailyForecast(props) {
 
     useEffect(() => {
       setReady(false);
-    }, [props.forecast.response.data.coord]);
+    }, [props.coords]);
   
   if (ready) {
     return (
