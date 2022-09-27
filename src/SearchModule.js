@@ -5,7 +5,7 @@ import WeatherForecast from "./WeatherForecast.js";
 import SourceCode from "./SourceCode.js";
 import axios from "axios";
 import LocationButton from "./LocationButton";
-import { setGlobalState, useGlobalState } from "./state/index.js";
+import { useGlobalState, setGlobalState } from "./state/index.js";
 
 export default function SearchModule() {
   let [ready, setReady] = useState(false);
@@ -18,7 +18,7 @@ export default function SearchModule() {
   });
   console.log(coords);
 
-  let long = useGlobalState("lat");
+  let long = useGlobalState("coords");
   console.log(long);
 
   function showApiResponse(response) {
@@ -31,8 +31,10 @@ export default function SearchModule() {
     });
 
     setGlobalState({
-      lat: response.data.coord.lat,
-      lon: response.data.coord.lon,
+      coords: {
+        lat: response.data.coord.lat,
+        lon: response.data.coord.lon,
+      },
     });
   }
 
@@ -46,7 +48,8 @@ export default function SearchModule() {
   }
 
   function Search() {
-    let apiKey = "4ac2c287c8855d10edca04e5759fe661";
+    //let apiKey1 = "4ac2c287c8855d10edca04e5759fe661";
+    let apiKey = "0dc40d3d7cda209ca40e77430c74cf57";
     let units = "metric";
     let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrlByCity).then(showApiResponse);
