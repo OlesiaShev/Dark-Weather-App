@@ -1,10 +1,9 @@
 import { createGlobalState } from "react-hooks-global-state";
 
-const { setGlobalState, useGlobalState } = createGlobalState({
+
+export const { useGlobalState } = createGlobalState({
   coords: {
     lat: null,
     lon: null,
   },
 });
-
-export { useGlobalState, setGlobalState };

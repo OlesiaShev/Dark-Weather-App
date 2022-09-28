@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 // import axios from "axios";
 import DailyForecast from "./DailyForecast";
+import { useGlobalState } from "./state/index.js";
+
 
 export default function LocationButon() {
 let [coords, setCoords] = useState({
   lat: null,
   lon: null,
 });
-let [ready, setReady] = useState(false);
+  let [ready, setReady] = useState(false);
+  
+let [globalCoords, setGlobalCoords] = useGlobalState("coords");
+console.log(globalCoords); 
 
-console.log(coords);
+//console.log(coords);
 
 function checkReady() {
   if (ready) {
@@ -26,11 +31,15 @@ function checkReady() {
 function userCoords(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(function (position) {
-    setCoords({
-      lat: position.coords.latitude,
-      lon: position.coords.longitude,
+    setGlobalCoords({
+      coords: {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      },
     });
   });
+
+  
   setReady(true);
   checkReady();
 }

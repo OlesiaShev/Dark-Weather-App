@@ -1,42 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchResults from "./SearchResults";
 import DailyForecast from "./DailyForecast.js";
 import WeatherForecast from "./WeatherForecast.js";
 import SourceCode from "./SourceCode.js";
 import axios from "axios";
 import LocationButton from "./LocationButton";
-import { useGlobalState, setGlobalState } from "./state/index.js";
+import { useGlobalState } from "./state/index.js";
 
-export default function SearchModule() {
+export default function SearchModule()
+{
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState("Paris");
   let [forecastObject, setForecastObject] = useState({});
-  console.log(forecastObject);
-  let [coords, setCoords] = useState({
-    lat: null,
-    lon: null,
-  });
-  console.log(coords);
+ // console.log(forecastObject);
+  //console.log(coords);
 
-  let long = useGlobalState("coords");
-  console.log(long);
+  let [globalCoords, setGlobalCoords] = useGlobalState("coords");
+  console.log(globalCoords);
 
-  function showApiResponse(response) {
+  function showApiResponse(response)
+  {
     setReady(true);
     setForecastObject({ response });
 
-    setCoords({
-      lat: response.data.coord.lat,
-      lon: response.data.coord.lon,
-    });
 
-    setGlobalState({
+    setGlobalCoords({
       coords: {
         lat: response.data.coord.lat,
         lon: response.data.coord.lon,
       },
     });
   }
+
+  // useEffect(() =>
+  // {
+  //   setReady(false);
+  // }, [useGlobalState("coords")]);
 
   function updateValue(event) {
     setInput(event.target.value);
@@ -86,7 +85,7 @@ export default function SearchModule() {
           </form>
           <SearchResults forecast={forecastObject} />
           <WeatherForecast forecast={forecastObject} />
-          <DailyForecast coords={coords} />
+          <DailyForecast coords={globalCoords.coords} />
           <SourceCode />
         </div>
       </div>
