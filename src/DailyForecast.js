@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OneDayForecast from "./OneDayForecast";
-import { useGlobalState } from "./state/index.js";
 
 export default function DailyForecast(props) {
- // console.log(props);
+  // console.log(props);
   let [ready, setReady] = useState(false);
   let [dailyForecast, setDailyForecast] = useState(null);
 
-  const [coords, setCoords] = useGlobalState("coords");
-  //console.log(coords);
+ // console.log(props);
 
   let days = [
     "Sunday",
@@ -26,17 +24,13 @@ export default function DailyForecast(props) {
     setReady(true);
   }
   function requestForecast() {
-    let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
-    //let apiKeyq = "0dc40d3d7cda209ca40e77430c74cf57";
+   // let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
+    let apiKeyq = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
-    // let lon = props.coords.lon;
-    // let lat = props.coords.lat;
-    // let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
-
     let lon = props.coords.lon;
     let lat = props.coords.lat;
     let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
-
+    console.log(apiUrlByCoord);
     axios.get(apiUrlByCoord).then(showDailyForecast);
   }
 
