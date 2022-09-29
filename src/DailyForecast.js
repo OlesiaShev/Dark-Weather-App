@@ -24,13 +24,13 @@ export default function DailyForecast(props) {
     setReady(true);
   }
   function requestForecast() {
-   // let apiKeyq = "53f3bc1f5d348c44be3e3754c7185573";
-    let apiKeyq = "4ac2c287c8855d10edca04e5759fe661";
+   let apiKeyq = "5aac6d0188c6f17d6d2bbe6591b6fef0";
+   // let apiKeyq = "4ac2c287c8855d10edca04e5759fe661";
     let units = "metric";
     let lon = props.coords.lon;
     let lat = props.coords.lat;
     let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
-    console.log(apiUrlByCoord);
+    //console.log(apiUrlByCoord);
     axios.get(apiUrlByCoord).then(showDailyForecast);
   }
 
