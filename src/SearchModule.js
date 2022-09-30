@@ -15,8 +15,6 @@ export default function SearchModule() {
   //console.log(input);
 
   let globalCoords = useGlobalState("coords");
-  //console.log(globalCoords);
-  //console.log(globalCoords[0]);
   let globalInput = useGlobalState("globalCity");
   console.log(globalInput[0]);
   let temp = globalInput[0];
