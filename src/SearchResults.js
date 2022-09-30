@@ -5,7 +5,7 @@ import IconsModule from "./IconsModule.js";
 
 export default function SearchResults(props)
 {
-  let [ready, setReady] = useState(false);
+ // let [ready, setReady] = useState(false);
  let iconCode = props.forecast.response.data.weather[0].icon;
   let timestamp = props.forecast.response.data.dt;
 

@@ -11,7 +11,7 @@ export default function SearchModule() {
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState(null);
   let [forecastObject, setForecastObject] = useState({});
-  // console.log(forecastObject);
+  //console.log(forecastObject.response.data.name);
   //console.log(input);
 
   let globalCoords = useGlobalState("coords");
@@ -20,43 +20,38 @@ export default function SearchModule() {
   let globalInput = useGlobalState("globalCity");
   console.log(globalInput[0]);
   let temp = globalInput[0];
-  
 
-    useEffect(() => {
-      setReady(false);
-    }, [temp]);
-       useEffect(() => {
-         setReady(false);
-       }, [globalCoords.coords]);
+   useEffect(() => {
+     setReady(false);
+   }, [temp]);
   
-  function showApiResponse(response)
-  {
+  //  useEffect(() => {
+  //    setReady(false);
+  //  }, [forecastObject.response.data.name]);
+
+  function showApiResponse(response) {
     console.log(response);
     setReady(true);
     setForecastObject({ response });
 
-    setGlobalState(
-      "coords", {
-        lat: response.data.coord.lat,
-        lon: response.data.coord.lon,
-      },
-    );
+    setGlobalState("coords", {
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
+    });
   }
   function updateValue(event) {
     setInput(event.target.value);
-
   }
 
   function handleSubmit(event) {
-  event.preventDefault();
-  setGlobalState ("globalCity", input);
-  
+    event.preventDefault();
+    setGlobalState("globalCity", input);
   }
   console.log(globalInput[0]);
 
   function Search() {
-    let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
-    //let apiKey = "0dc40d3d7cda209ca40e77430c74cf57";
+    //let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
+    let apiKey = "0dc40d3d7cda209ca40e77430c74cf57";
     let units = "metric";
     let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${globalInput[0]}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrlByCity).then(showApiResponse);
