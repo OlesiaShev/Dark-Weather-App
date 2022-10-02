@@ -7,4 +7,6 @@ export const { useGlobalState, setGlobalState } = createGlobalState({
     lon: null,
   },
   globalCity: "Paris",
+  forecastObject: {
+},
 });

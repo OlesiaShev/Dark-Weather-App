@@ -7,21 +7,21 @@ import axios from "axios";
 import LocationButton from "./LocationButton";
 import { useGlobalState, setGlobalState } from "./state/index.js";
 
-export default function SearchModule() {
+export default function SearchModule(props)
+{
+  console.log(props.city[0]);
   let [ready, setReady] = useState(false);
-  let [input, setInput] = useState(null);
-  let [forecastObject, setForecastObject] = useState({});
-  //console.log(forecastObject.response.data.name);
+  let [input, setInput] = useState(props.city[0]);
+  let forecastObject = useGlobalState("forecastObject");
+  //console.log(forecastObject[0].data.name);
   //console.log(input);
 
   let globalCoords = useGlobalState("coords");
-  let globalInput = useGlobalState("globalCity");
-  console.log(globalInput[0]);
-  let temp = globalInput[0];
+ // let globalInput = props.city[0];
 
    useEffect(() => {
      setReady(false);
-   }, [temp]);
+   }, [props.city[0]]);
   
   //  useEffect(() => {
   //    setReady(false);
@@ -30,30 +30,33 @@ export default function SearchModule() {
   function showApiResponse(response) {
     console.log(response);
     setReady(true);
-    setForecastObject({ response });
-
+    setGlobalState("forecastObject", response);
+    setGlobalState("globalCity", response.data.name);
     setGlobalState("coords", {
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
     });
   }
-  function updateValue(event) {
-    setInput(event.target.value);
+  function Search() {
+    //let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
+    let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+    let units = "metric";
+    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrlByCity).then(showApiResponse);
+    return "Loading data...";
   }
+
+  
 
   function handleSubmit(event) {
     event.preventDefault();
     setGlobalState("globalCity", input);
+    console.log("ello");
+    Search();
   }
-  console.log(globalInput[0]);
 
-  function Search() {
-    //let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
-    let apiKey = "0dc40d3d7cda209ca40e77430c74cf57";
-    let units = "metric";
-    let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${globalInput[0]}&units=${units}&appid=${apiKey}`;
-    axios.get(apiUrlByCity).then(showApiResponse);
-    return "Loading data...";
+  function updateValue(event) {
+    setInput(event.target.value);
   }
 
   if (ready) {
@@ -84,8 +87,8 @@ export default function SearchModule() {
               </div>
             </div>
           </form>
-          <SearchResults forecast={forecastObject} />
-          <WeatherForecast forecast={forecastObject} />
+          <SearchResults forecast={forecastObject[0]} />
+          <WeatherForecast forecast={forecastObject[0]} />
           <DailyForecast coords={globalCoords[0]} />
           <SourceCode />
         </div>
