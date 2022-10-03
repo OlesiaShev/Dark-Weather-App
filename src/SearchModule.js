@@ -44,10 +44,10 @@ export default function SearchModule(props)
     });
   }
   function Search() {
-    //let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
+    let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
     if (searchedCity) {
       let city = searchedCity;
-      let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+     // let apiKey = "6f578b96aa9505bcce148ac22cb85794";
       let units = "metric";
       let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
       axios.get(apiUrlByCity).then(showApiResponse);

@@ -20,8 +20,8 @@ export default function LocationButon() {
 
   
   function requestCityByCoords(position) {
-    let apiKey = "6f578b96aa9505bcce148ac22cb85794";
-    //let apiKey = "0dc40d3d7cda209ca40e77430c74cf57";
+    //let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+    let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showApiResponse);
     return "Loading data...";
