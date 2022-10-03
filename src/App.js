@@ -6,7 +6,7 @@ import { useGlobalState } from "./state/index.js";
 
 function App()
 {
-  let city = useGlobalState("globalCity");
+  let city = useGlobalState("forecastObject");
   return (
     <div className="App">
       <header className="App-header">

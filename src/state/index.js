@@ -6,7 +6,10 @@ export const { useGlobalState, setGlobalState } = createGlobalState({
     lat: null,
     lon: null,
   },
-  globalCity: "Paris",
+ globalCity: "",
   forecastObject: {
+    data: {
+      name: "Deli"
+    }
 },
 });
