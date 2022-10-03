@@ -3,11 +3,12 @@ import axios from "axios";
 import OneDayForecast from "./OneDayForecast";
 
 export default function DailyForecast(props) {
-  // console.log(props);
   let [ready, setReady] = useState(false);
   let [dailyForecast, setDailyForecast] = useState(null);
 
- // console.log(props);
+  useEffect(() => {
+    setReady(false);
+  }, [props.coords]);
 
   let days = [
     "Sunday",
@@ -24,19 +25,16 @@ export default function DailyForecast(props) {
     setReady(true);
   }
   function requestForecast() {
-   let apiKeyq = "5aac6d0188c6f17d6d2bbe6591b6fef0";
-   // let apiKeyq = "25fad9f7e87157d33dde0f82ab269ee8";
+    let apiKeyq = "5aac6d0188c6f17d6d2bbe6591b6fef0";
+    // let apiKeyq = "25fad9f7e87157d33dde0f82ab269ee8";
     let units = "metric";
     let lon = props.coords.lon;
     let lat = props.coords.lat;
     let apiUrlByCoord = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKeyq}`;
-    //console.log(apiUrlByCoord);
     axios.get(apiUrlByCoord).then(showDailyForecast);
   }
 
-  useEffect(() => {
-    setReady(false);
-  }, [props.coords]);
+
 
   if (ready) {
     return (

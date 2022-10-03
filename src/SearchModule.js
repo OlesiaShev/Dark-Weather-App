@@ -12,28 +12,17 @@ export default function SearchModule(props)
   // console.log(props.city[0]);
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState(null);
-  let forecastObject = useGlobalState("forecastObject");
   let [searchedCity, setSearchedCity] = useState(null);
-  //console.log(forecastObject[0].data.name);
-  //console.log(input);
-  console.log(searchedCity);
 
+  let forecastObject = useGlobalState("forecastObject");
   let globalCoords = useGlobalState("coords");
-  // let globalInput = props.city[0];
+  console.log(forecastObject);
 
   useEffect(() => {
     setReady(false);
-  }, [forecastObject.data]);
-    useEffect(() => {
-      setReady(false);
-    }, [searchedCity]);
-
-  //  useEffect(() => {
-  //    setReady(false);
-  //  }, [forecastObject.response.data.name]);
+  }, [searchedCity]);
 
   function showApiResponse(response) {
-    // console.log(response);
     setReady(true);
     setInput(response.data.name);
     setGlobalState("forecastObject", response);
@@ -42,29 +31,27 @@ export default function SearchModule(props)
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
     });
+    console.log("API showed");
   }
   function Search() {
     let apiKey = "5aac6d0188c6f17d6d2bbe6591b6fef0";
     if (searchedCity) {
       let city = searchedCity;
-     // let apiKey = "6f578b96aa9505bcce148ac22cb85794";
+      // let apiKey = "6f578b96aa9505bcce148ac22cb85794";
       let units = "metric";
       let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
       axios.get(apiUrlByCity).then(showApiResponse);
-      console.log("Search per city works");
     } else {
       let city = forecastObject[0].data.name;
       let apiKey = "6f578b96aa9505bcce148ac22cb85794";
       let units = "metric";
       let apiUrlByCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
       axios.get(apiUrlByCity).then(showApiResponse);
-      console.log("GeneralSearch works");
     }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    //setGlobalState("forecastObject", input);
     setSearchedCity(input.data.name);
     Search();
     console.log("HandleSubmit");

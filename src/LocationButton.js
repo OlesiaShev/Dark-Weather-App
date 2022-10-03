@@ -3,19 +3,9 @@ import axios from "axios";
 import { setGlobalState } from "./state/index.js";
 
 export default function LocationButon() {
-  // let [ready, setReady] = useState(false);
-  // let [coords, setCoords] = useState("");
-  // let globalCoords = useGlobalState("coords");
-
-  //let globalInput = useGlobalState("globalCity");
-
   function showApiResponse(response)
   {
-    // console.log(response.data.name);
     setGlobalState("forecastObject", response);
-    //console.log(response.data.name);
-    //setGlobalState("globalCity", response.data.name);
-  // console.log(globalInput);
   }
 
   
@@ -27,10 +17,8 @@ export default function LocationButon() {
     return "Loading data...";
   }
 
-
   function userCoords(event) {
     event.preventDefault();
-   
     navigator.geolocation.getCurrentPosition(function (position)
     {
       if (position) {

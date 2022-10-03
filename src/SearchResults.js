@@ -4,17 +4,8 @@ import IconsModule from "./IconsModule.js";
 
 export default function SearchResults(props)
 {
-  console.log(props);
- //.forecast.data.weather[0].icon);
-  
   let iconCode = props.forecast.data.weather[0].icon;
   let timestamp = props.forecast.data.dt;
-
-//  useEffect(() => {
-//   // console.log("hello");
-//  }, [props.forecast.data.weather[0]]);
-
-
   return (
     <div>
       <div className="cityResults row p-2 m-3">
