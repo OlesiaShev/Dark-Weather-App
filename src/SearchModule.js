@@ -7,8 +7,7 @@ import axios from "axios";
 import LocationButton from "./LocationButton";
 import { useGlobalState, setGlobalState } from "./state/index.js";
 
-export default function SearchModule(props)
-{
+export default function SearchModule() {
   // console.log(props.city[0]);
   let [ready, setReady] = useState(false);
   let [input, setInput] = useState(null);
@@ -16,13 +15,14 @@ export default function SearchModule(props)
 
   let forecastObject = useGlobalState("forecastObject");
   let globalCoords = useGlobalState("coords");
-  console.log(forecastObject);
+  //console.log(forecastObject);
 
   useEffect(() => {
     setReady(false);
   }, [searchedCity]);
 
   function showApiResponse(response) {
+    console.log(response);
     setReady(true);
     setInput(response.data.name);
     setGlobalState("forecastObject", response);
